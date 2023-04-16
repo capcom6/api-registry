@@ -16,7 +16,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: capcom6/bitbucket-issues
+          images: capcom6/api-registry
           tags: |
             type=ref,event=branch
             type=ref,event=pr
