@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>APIs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>APIs</h1>
+    {% for project, apis in api_groups.items() %}
+        <h2>{{ project }}</h2>
+        <ul class="list-group">
+            {% for api in apis %}
+                <li class="list-group-item">
+                    <h4>{{ api.name }}</h4>
+                    <a href="/index.html?url={{ api.path }}" target="_blank">{{ api.path }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
+</body>
+</html>
