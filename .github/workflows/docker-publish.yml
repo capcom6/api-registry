@@ -1,10 +1,12 @@
 name: Docker
 
-on: push
+on:
+  push:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: "!startsWith(github.ref, 'refs/tags/v')"
     permissions:
       contents: read
 
@@ -16,7 +18,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v3
         with:
-          images: capcom6/api-registry
+          images: capcom6/${{ vars.APP_NAME }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
