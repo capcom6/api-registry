@@ -23,6 +23,10 @@ resource "docker_config" "app" {
   }
 }
 
+resource "docker_volume" "apis" {
+  name = "${var.app-name}-apis"
+}
+
 resource "docker_service" "app" {
   name = var.app-name
 
@@ -34,6 +38,12 @@ resource "docker_service" "app" {
         config_id   = docker_config.app.id
         config_name = docker_config.app.name
         file_name   = "/app/config.yml"
+      }
+
+      mounts {
+        source = docker_volume.apis.name
+        target = "/app/static/apis"
+        type   = "volume"
       }
     }
     networks_advanced {
