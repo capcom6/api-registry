@@ -21,7 +21,7 @@ async def index(request: Request):
     path_apis = os.path.join(path_static, "apis")
     apis = [
         {
-            "path": p.removeprefix(path_static),
+            "path": p.replace(path_static, "", 1),
             "name": os.path.splitext(os.path.basename(p))[0],
             "group": os.path.split(os.path.dirname(p))[1],
         }
